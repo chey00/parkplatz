@@ -2,7 +2,14 @@ def set_parkingspace(row):
     number_plate = input("Bitte geben Sie Ihr Kennzeichen an: ")
     position = int(input("Bitte geben Sie die Parkplatznummer an: "))
 
-    row[position - 1] = number_plate
+    if position < 1 or position > 6:
+        print("Parkplatz exsistiert nicht")
+        return
+
+    if row[position - 1] == "":
+        row[position - 1] = number_plate
+    else:
+        print("Parkplatz bereits besetzt")
 
 def free_parkingspace(row):
     position = int(input("Bitte geben Sie die Parkplatznummer an: "))
@@ -10,6 +17,9 @@ def free_parkingspace(row):
     row[position - 1] = ""
 
 parkingspace = [""] * 6
+
+set_parkingspace(parkingspace)
+print(parkingspace)
 
 set_parkingspace(parkingspace)
 print(parkingspace)
