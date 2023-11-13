@@ -25,9 +25,21 @@ def set_parkingspace(row, time):
 # Diese Funktion simuliert das Verlassen eines Parkplatzes.
 # Der Parameter time wird erst für die Aufgabe 5 benötigt.
 def free_parkingspace(row, time):
-    # Die Parkplatznummer wird über eine Benutzereingabe ermittelt. Anhand der Parkplatznummer wird später das
-    # Kennzeichen gelöscht. Die Eingabe wird zu einer Ganzzahl umgewandelt.
-    position = int(input("Bitte geben Sie die Parkplatznummer an: "))
+    # Benutzer entscheidet, ob er den Parkplatz über sein Kennzeichen oder die Parkplatznummer freigeben möchte.
+    choise = input("Kennzeichen oder Parkplatznummer eingeben?")
+
+    # Entsprechend der Entscheidung werden unterschiedliche Dialoge angezeigt.
+    if choise == "Kennzeichen":
+        # Über das Kennzeichen suchen wir in der Liste den Index des Kennzeicheneintrags.
+        number_plate = input("Bitte geben Sie Ihr Kennzeichen an: ")
+
+        index = row.index(number_plate)
+        # Der Index-Eintrag ist um Eins kleiner als die Parkposition.
+        position = index + 1
+    else:
+        # Die Parkplatznummer wird über eine Benutzereingabe ermittelt. Anhand der Parkplatznummer wird später das
+        # Kennzeichen gelöscht. Die Eingabe wird zu einer Ganzzahl umgewandelt.
+        position = int(input("Bitte geben Sie die Parkplatznummer an: "))
 
     # Prüft, ob die Parkplatznummer in einem gültigen Bereich liegt.
     if position < 1 or position > 6:
